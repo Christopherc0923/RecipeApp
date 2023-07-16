@@ -14,12 +14,25 @@ function Popular() {
   }, []);
 
   const getPopular = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-    );
-    const data = await api.json();
-    console.log(data);
-    setPopular(data.recipes);
+    {
+      /* Add variable that stores the recent API call, to reduce API request usage*/
+    }
+    const checkLocal = localStorage.getItem("popular");
+
+    {
+      /* If the localstorage contains the recipes, then setPopular to it. Else run the api request*/
+    }
+    if (checkLocal) {
+      setPopular(JSON.parse(checkLocal));
+    } else {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+      );
+      const data = await api.json();
+      console.log(data);
+      setPopular(data.recipes);
+      localStorage.setItem("popular", JSON.stringify(data.recipes));
+    }
   };
 
   return (
