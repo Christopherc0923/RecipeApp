@@ -22,9 +22,10 @@ function Search() {
   };
 
   return (
-    <FormStyle onSubmit={submitHandler}>
+    <FormStyle className="container p-3" onSubmit={submitHandler}>
       <div>
         <FaSearch></FaSearch>
+
         <input
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -37,14 +38,13 @@ function Search() {
 }
 
 const FormStyle = styled.div`
-  margin: 0rem 10rem;
   input {
     width: 100%;
     border: none;
     background: linear-gradient(35deg, #494949, #313131);
     font-size: 1rem;
     color: white;
-    padding: 1rem 3rem;
+    padding: 1rem 4rem;
     border: none;
     border-radius: 1rem;
     outline: none;

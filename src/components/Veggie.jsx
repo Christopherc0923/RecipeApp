@@ -6,6 +6,41 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom";
 
 function Veggie() {
+  const calculatePageSize = () => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1000) {
+      return 3;
+    } else {
+      return 1;
+    }
+  };
+
+  const [pageSize, setPageSize] = useState(calculatePageSize());
+
+  const splideOptions = {
+    perPage: pageSize,
+    arrows: false,
+    pagination: false,
+    drag: "free",
+    gap: "5rem",
+  };
+
+  {
+    /* Triggers the function to determine pagesize using useEffect*/
+  }
+  useEffect(() => {
+    const handleResize = () => {
+      const newPageSize = calculatePageSize();
+      setPageSize(newPageSize);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const [veggie, setVeggie] = useState([]);
   {
     /* Triggers the getVeggie function when the page loads using useEffect*/
@@ -37,22 +72,14 @@ function Veggie() {
   };
 
   return (
-    <div>
+    <div className="m-2">
       <Wrapper>
-        <h2>Veggie Recipes</h2>
-        <Splide
-          options={{
-            perPage: 3,
-            arrows: false,
-            pagination: false,
-            drag: "free",
-            gap: "5rem",
-          }}
-        >
+        <h2 className="text-center m-3">Veggie Recipes</h2>
+        <Splide options={splideOptions}>
           {veggie.map((recipe) => {
             return (
               <SplideSlide>
-                <Card>
+                <Card className="zoom-effect">
                   <Link to={"recipe/" + recipe.id}>
                     <p>{recipe.title}</p>
                     <img src={recipe.image} />
@@ -95,7 +122,7 @@ const Card = styled.div`
     transform: translate(-50%, 0%);
     color: white;
     width: 100%;
-    font-weihgt: 600;
+    font-weight: 600;
     font-size: 1rem;
     height: 40%;
     display: flex;

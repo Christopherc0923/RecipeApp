@@ -1,13 +1,15 @@
 import React from "react";
-import Categories from "../components/Categories";
+import CookieModal from "../components/CookieModal";
 import Popular from "../components/Popular";
 import Veggie from "../components/Veggie";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="container">
+      <CookieModal />
+      <hr />
       <Popular />
+      <hr />
       <Veggie />
     </div>
   );

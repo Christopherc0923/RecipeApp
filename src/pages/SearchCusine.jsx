@@ -25,11 +25,14 @@ function SearchCusine() {
   }, [params.input]);
 
   return (
-    <Grid>
+    <Grid className="container">
       {search.map((item) => {
         return (
-          <Card key={item.id}>
-            <Link to={"../../recipe/" + item.id}>
+          <Card className="zoom-effect" key={item.id}>
+            <Link
+              className="text-decoration-none text-dark"
+              to={"../../recipe/" + item.id}
+            >
               <img src={item.image} />
               <h4>{item.title}</h4>
             </Link>
@@ -50,6 +53,7 @@ const Card = styled.div`
     width: 100%;
     border-radius: 2rem;
   }
+
   a {
     text-decoration: none;
   }

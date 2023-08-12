@@ -19,3 +19,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.zoom-effect {
+  overflow: hidden;
+}
+
+.zoom-effect img {
+  transition: transform 0.3s;
+}
+
+.zoom-effect img:hover {
+  transform: scale(1.08);
+}

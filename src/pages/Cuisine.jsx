@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -24,10 +23,10 @@ function Cuisine() {
   }, [params.type]);
 
   return (
-    <Grid>
+    <Grid className="container">
       {cuisine.map((item) => {
         return (
-          <Card key={item.id}>
+          <Card className="zoom-effect" key={item.id}>
             <Link to={"../../recipe/" + item.id}>
               <img src={item.image} />
               <h4>{item.title}</h4>
