@@ -23,7 +23,7 @@ function Search() {
 
   return (
     <FormStyle className="container p-3" onSubmit={submitHandler}>
-      <div>
+      <div className="container w-75">
         <FaSearch></FaSearch>
 
         <input

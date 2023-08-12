@@ -81,7 +81,7 @@ function Veggie() {
               <SplideSlide>
                 <Card className="zoom-effect">
                   <Link to={"recipe/" + recipe.id}>
-                    <p>{recipe.title}</p>
+                    <p className="text-center">{recipe.title}</p>
                     <img src={recipe.image} />
                     <Gradient />
                   </Link>
