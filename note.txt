@@ -1,0 +1,7 @@
+Objective
+
+    The goal of this project is to connect to Spoonacular API and display recipes
+
+Skills
+
+    ReactJS, API, HTML, CSS, JavaScript
