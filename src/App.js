@@ -12,7 +12,7 @@ import BackToTop from "./components/BackToTop";
 function App() {
   return (
     <div className="App spacer layer1" style={{ padding: "0", margin: "0" }}>
-      <BrowserRouter>
+      <BrowserRouter basename="/RecipeApp">
         <Navbar />
 
         <Search />

@@ -5,9 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom";
 
-function Popular() {
-  const [popular, setPopular] = useState([]);
-
+function Keto() {
   const calculatePageSize = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth >= 1000) {
@@ -28,13 +26,6 @@ function Popular() {
   };
 
   {
-    /* Triggers the getPopular function when the page loads using useEffect*/
-  }
-  useEffect(() => {
-    getPopular();
-  }, []);
-
-  {
     /* Triggers the function to determine pagesize using useEffect*/
   }
   useEffect(() => {
@@ -50,34 +41,43 @@ function Popular() {
     };
   }, []);
 
-  const getPopular = async () => {
+  const [keto, setKeto] = useState([]);
+  {
+    /* Triggers the getKeto function when the page loads using useEffect*/
+  }
+  useEffect(() => {
+    getKeto();
+  }, []);
+
+  const getKeto = async () => {
     {
       /* Add variable that stores the recent API call, to reduce API request usage*/
     }
-    const checkLocal = localStorage.getItem("popular");
+    const checkLocal = localStorage.getItem("keto");
 
     {
-      /* If the localstorage contains the recipes, then setPopular to it. Else run the api request*/
+      /* If the localstorage contains the recipes, then setKeto to it. Else run the api request*/
     }
     if (checkLocal) {
-      setPopular(JSON.parse(checkLocal));
+      setKeto(JSON.parse(checkLocal));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=8&tags=ketogenic`
       );
       const data = await api.json();
+
       console.log(data);
-      setPopular(data.recipes);
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
+      setKeto(data.recipes);
+      localStorage.setItem("keto", JSON.stringify(data.recipes));
     }
   };
 
   return (
     <div className="m-2">
       <Wrapper>
-        <h2 className="text-center m-3">Popular Recipes</h2>
+        <h2 className="text-center m-3">Keto Recipes</h2>
         <Splide options={splideOptions}>
-          {popular.map((recipe) => {
+          {keto.map((recipe) => {
             return (
               <SplideSlide>
                 <Card className="zoom-effect">
@@ -140,4 +140,4 @@ const Gradient = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 `;
 
-export default Popular;
+export default Keto;

@@ -25,14 +25,38 @@ function Categories() {
         <GiChopsticks />
         <h4>Japanese</h4>
       </SLink>
+      <SLink to={"/cuisine/Chinese"}>
+        <GiChopsticks />
+        <h4>Chinese</h4>
+      </SLink>
+      <SLink to={"/cuisine/Indian"}>
+        <GiChopsticks />
+        <h4>Indian</h4>
+      </SLink>
+      <SLink to={"/cuisine/Mediterranean"}>
+        <GiChopsticks />
+        <h4>Mediterranean</h4>
+      </SLink>
+      <SLink to={"/cuisine/Mexican"}>
+        <GiChopsticks />
+        <h4>Mexican</h4>
+      </SLink>
+      <SLink to={"/cuisine/Mexican"}>
+        <GiChopsticks />
+        <h4>Mexican</h4>
+      </SLink>
     </List>
   );
 }
 
 const List = styled.div`
-  display: flex;
+  display: grid;
   justify-content: center;
   margin: 2rem 0rem;
+  height: auto;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  width: 80%;
+  margin: 0 auto;
 `;
 
 // Styling the Navlinks
@@ -43,7 +67,7 @@ const SLink = styled(NavLink)`
   align-items: center;
 
   border-radius: 50%;
-  margin-right: 2rem;
+  margin: 0 auto;
   text-decoration: none;
   background: linear-gradient(35deg, #494949, #313131);
   width: 6rem;

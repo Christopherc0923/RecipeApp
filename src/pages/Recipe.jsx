@@ -58,6 +58,7 @@ function Recipe() {
             Ingredients
           </button>
           <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+          <hr />
           <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
         </Info>
       </Wrapper>
@@ -66,9 +67,15 @@ function Recipe() {
 }
 
 const Wrapper = styled.div`
-  margin-top: 10rem;
-  margin-bottom: 5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin: 0 auto;
+
+  img {
+    width: auto;
+  }
+
   h2 {
     margin-bottom: 2rem;
   }
@@ -87,8 +94,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Info = styled.div`
-  margin-left: 10rem;
-`;
+const Info = styled.div``;
 
 export default Recipe;

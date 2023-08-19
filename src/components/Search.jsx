@@ -54,9 +54,15 @@ const FormStyle = styled.div`
     position: absolute;
     color: white;
     top: 35%;
-    left: 2.5%;
+    left: 3.5%;
     tranform: translate(100%, -50%);
     z-index: 10;
+  }
+
+  @media screen and (max-width: 750px) {
+    svg {
+      left: 10%;
+    }
   }
 
   div {

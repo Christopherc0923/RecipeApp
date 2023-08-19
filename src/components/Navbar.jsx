@@ -8,6 +8,7 @@ import {
   faTwitter,
   faAmazon,
 } from "@fortawesome/free-brands-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   return (
@@ -68,6 +69,9 @@ export default function Navbar() {
           >
             <FontAwesomeIcon icon={faAmazon} style={{ color: "black" }} />
           </a>
+          <Link to="/about" style={{ color: "black" }}>
+            <FontAwesomeIcon icon={faInfoCircle} />
+          </Link>
         </div>
       </nav>
     </div>
