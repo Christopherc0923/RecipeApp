@@ -33,6 +33,19 @@ function Recipe() {
     border: "2px solid black",
     marginRight: "2rem",
     fontWeight: "600",
+
+    instructions: {
+      background:
+        activeTab === "instructions"
+          ? "linear-gradient(to right, #f27121, #e94057)"
+          : "#FFFFFF",
+    },
+    ingredients: {
+      background:
+        activeTab === "ingredients"
+          ? "linear-gradient(to right, #f27121, #e94057)"
+          : "#FFFFFF",
+    },
   };
 
   return (
@@ -43,23 +56,40 @@ function Recipe() {
           <img src={details.image} />
         </div>
         <Info>
-          <button
-            className={activeTab === "ingredients" ? "active" : ""}
-            onClick={() => setActiveTab("ingredients")}
-            style={StyleButton}
-          >
-            Instructions
-          </button>
-          <button
-            className={activeTab === "instructions" ? "active" : ""}
-            onClick={() => setActiveTab("instructions")}
-            style={StyleButton}
-          >
-            Ingredients
-          </button>
-          <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
-          <hr />
-          <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
+          <div style={{ textAlign: "center", padding: "2rem" }}>
+            <button
+              className="ingredients"
+              onClick={() => setActiveTab("ingredients")}
+              style={Object.assign({}, StyleButton, StyleButton.ingredients)}
+            >
+              Instructions
+            </button>
+            <button
+              className="instructions"
+              onClick={() => setActiveTab("instructions")}
+              style={Object.assign({}, StyleButton, StyleButton.instructions)}
+            >
+              Ingredients
+            </button>
+          </div>
+          <div className="" style={{ margin: "2rem" }}>
+            <h3
+              dangerouslySetInnerHTML={{ __html: details.summary }}
+              style={{
+                display: activeTab === "instructions" ? "block" : "none",
+                fontFamily: "sans-serif",
+                fontSize: "1.5rem",
+              }}
+            ></h3>
+            <h3
+              dangerouslySetInnerHTML={{ __html: details.instructions }}
+              style={{
+                display: activeTab === "ingredients" ? "block" : "none",
+                fontFamily: "sans-serif",
+                fontSize: "1.5rem",
+              }}
+            ></h3>
+          </div>
         </Info>
       </Wrapper>
     </div>
@@ -70,10 +100,14 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
+  min-height: 100vh;
+  justify-items: center; /* Center items horizontally */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  text-indent: 50px;
 
   img {
-    width: auto;
+    max-width: 100%; /* This allows the image to scale down while maintaining aspect ratio */
   }
 
   h2 {
